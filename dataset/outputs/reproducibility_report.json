@@ -1,0 +1,44 @@
+{
+  "seed": 20261022,
+  "scale": "full",
+  "formats": [
+    "csv"
+  ],
+  "generated_at": "2027-01-15T00:00:00Z",
+  "run_a_counts": {
+    "profiles": 1000,
+    "accounts": 2335,
+    "merchants": 82,
+    "categories": 25,
+    "category_rules": 258,
+    "budgets": 118784,
+    "transactions": 500000,
+    "transfer_links": 9514,
+    "recurring_series": 5609,
+    "insights": 59185,
+    "events": 3430
+  },
+  "run_b_counts": {
+    "profiles": 1000,
+    "accounts": 2335,
+    "merchants": 82,
+    "categories": 25,
+    "category_rules": 258,
+    "budgets": 118784,
+    "transactions": 500000,
+    "transfer_links": 9514,
+    "recurring_series": 5609,
+    "insights": 59185,
+    "events": 3430
+  },
+  "transaction_count_a": 500000,
+  "transaction_count_b": 500000,
+  "comparison": {
+    "files_compared": 25,
+    "files_matching": 25,
+    "mismatches": [],
+    "count_mismatches": {},
+    "status": "PASS"
+  },
+  "method": "Two fresh generations with the same seed; compare per-file row counts and SHA-256 checksums."
+}

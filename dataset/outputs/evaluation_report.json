@@ -1,0 +1,523 @@
+{
+  "dataset": "dataset",
+  "seed": 20261022,
+  "scale": "full",
+  "generated_at": "2027-01-15T00:00:00Z",
+  "evaluated_at": "2027-01-15T00:00:00Z",
+  "validation_status": "PASS",
+  "validation_checks": {
+    "pass": 138,
+    "warn": 0,
+    "fail": 0
+  },
+  "sections": {
+    "categorization": {
+      "accuracy": 0.9512,
+      "macro_f1": 0.9647,
+      "weighted_f1": 0.9521,
+      "support": 500000,
+      "per_class": [
+        {
+          "class": "DINING",
+          "support": 78832,
+          "predicted": 86363,
+          "precision": 0.8934,
+          "recall": 0.9788,
+          "f1": 0.9342
+        },
+        {
+          "class": "EDUCATION",
+          "support": 8325,
+          "predicted": 8152,
+          "precision": 1.0,
+          "recall": 0.9792,
+          "f1": 0.9895
+        },
+        {
+          "class": "ENTERTAINMENT",
+          "support": 25052,
+          "predicted": 24530,
+          "precision": 0.9998,
+          "recall": 0.979,
+          "f1": 0.9893
+        },
+        {
+          "class": "FEES",
+          "support": 8315,
+          "predicted": 8132,
+          "precision": 0.9998,
+          "recall": 0.9778,
+          "f1": 0.9886
+        },
+        {
+          "class": "GROCERY",
+          "support": 87332,
+          "predicted": 85628,
+          "precision": 0.9997,
+          "recall": 0.9802,
+          "f1": 0.9899
+        },
+        {
+          "class": "HEALTH",
+          "support": 29113,
+          "predicted": 28650,
+          "precision": 0.9999,
+          "recall": 0.984,
+          "f1": 0.9918
+        },
+        {
+          "class": "HOUSING_RENT",
+          "support": 9485,
+          "predicted": 9485,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "class": "INCOME_OTHER",
+          "support": 10423,
+          "predicted": 10225,
+          "precision": 1.0,
+          "recall": 0.981,
+          "f1": 0.9904
+        },
+        {
+          "class": "INCOME_SALARY",
+          "support": 10471,
+          "predicted": 10471,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "class": "INSURANCE",
+          "support": 8357,
+          "predicted": 8200,
+          "precision": 0.9996,
+          "recall": 0.9809,
+          "f1": 0.9902
+        },
+        {
+          "class": "OTHER",
+          "support": 16645,
+          "predicted": 24623,
+          "precision": 0.676,
+          "recall": 1.0,
+          "f1": 0.8067
+        },
+        {
+          "class": "REFUND",
+          "support": 6075,
+          "predicted": 6000,
+          "precision": 1.0,
+          "recall": 0.9877,
+          "f1": 0.9938
+        },
+        {
+          "class": "SHOPPING",
+          "support": 53939,
+          "predicted": 45752,
+          "precision": 0.9997,
+          "recall": 0.8479,
+          "f1": 0.9176
+        },
+        {
+          "class": "SUBSCRIPTION",
+          "support": 34559,
+          "predicted": 41741,
+          "precision": 0.8279,
+          "recall": 1.0,
+          "f1": 0.9059
+        },
+        {
+          "class": "TRANSFER",
+          "support": 19103,
+          "predicted": 19103,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "class": "TRANSPORT",
+          "support": 54356,
+          "predicted": 44089,
+          "precision": 0.9999,
+          "recall": 0.811,
+          "f1": 0.8956
+        },
+        {
+          "class": "TRAVEL",
+          "support": 18669,
+          "predicted": 18351,
+          "precision": 0.9998,
+          "recall": 0.9828,
+          "f1": 0.9912
+        },
+        {
+          "class": "UTILITIES",
+          "support": 20949,
+          "predicted": 20505,
+          "precision": 0.9999,
+          "recall": 0.9787,
+          "f1": 0.9891
+        }
+      ],
+      "coverage": 1.0,
+      "top_confusions": [
+        {
+          "true": "TRANSPORT",
+          "predicted": "DINING",
+          "count": 9193
+        },
+        {
+          "true": "SHOPPING",
+          "predicted": "SUBSCRIPTION",
+          "count": 7181
+        },
+        {
+          "true": "GROCERY",
+          "predicted": "OTHER",
+          "count": 1727
+        },
+        {
+          "true": "DINING",
+          "predicted": "OTHER",
+          "count": 1671
+        },
+        {
+          "true": "TRANSPORT",
+          "predicted": "OTHER",
+          "count": 1079
+        },
+        {
+          "true": "SHOPPING",
+          "predicted": "OTHER",
+          "count": 1022
+        },
+        {
+          "true": "ENTERTAINMENT",
+          "predicted": "OTHER",
+          "count": 526
+        },
+        {
+          "true": "HEALTH",
+          "predicted": "OTHER",
+          "count": 467
+        },
+        {
+          "true": "UTILITIES",
+          "predicted": "OTHER",
+          "count": 447
+        },
+        {
+          "true": "TRAVEL",
+          "predicted": "OTHER",
+          "count": 321
+        },
+        {
+          "true": "INCOME_OTHER",
+          "predicted": "OTHER",
+          "count": 198
+        },
+        {
+          "true": "FEES",
+          "predicted": "OTHER",
+          "count": 185
+        },
+        {
+          "true": "EDUCATION",
+          "predicted": "OTHER",
+          "count": 173
+        },
+        {
+          "true": "INSURANCE",
+          "predicted": "OTHER",
+          "count": 160
+        },
+        {
+          "true": "REFUND",
+          "predicted": "GROCERY",
+          "count": 23
+        }
+      ]
+    },
+    "treatment": {
+      "accuracy": 0.9996,
+      "macro_f1": 0.9948,
+      "weighted_f1": 0.9996,
+      "support": 500000,
+      "per_class": [
+        {
+          "class": "income",
+          "support": 20894,
+          "predicted": 20696,
+          "precision": 1.0,
+          "recall": 0.9905,
+          "f1": 0.9952
+        },
+        {
+          "class": "refund",
+          "support": 6075,
+          "predicted": 6273,
+          "precision": 0.9684,
+          "recall": 1.0,
+          "f1": 0.984
+        },
+        {
+          "class": "spend",
+          "support": 453928,
+          "predicted": 453928,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "class": "transfer",
+          "support": 19103,
+          "predicted": 19103,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      ]
+    },
+    "period_assignment": {
+      "local_month_accuracy": 1.0,
+      "utc_month_accuracy": 0.991,
+      "boundary_cases": 4506,
+      "boundary_share": 0.009012
+    },
+    "transfer_and_refund": {
+      "transfer_transactions": 19103,
+      "transfer_absolute_amount_usd": 15206047.0,
+      "refund_transactions": 6075,
+      "refund_credit_amount_usd": 458093.04,
+      "strict_net_spend_usd": 54015523.3,
+      "naive_spend_overstatement_usd": 16122233.08,
+      "naive_double_counted_transfer_usd": 15206047.0,
+      "naive_refund_expense_effect_usd": 916186.08,
+      "transfers_handled_as_transfer": 19103,
+      "refunds_handled_as_refund": 6075
+    },
+    "exceptions": {
+      "by_issue_type": [
+        {
+          "issue_type": "transfer_double_count",
+          "labelled_rows": 75,
+          "predicted_treatment_consistent": 75,
+          "predicted_category_consistent": 75,
+          "absolute_amount_usd": 60119.94
+        },
+        {
+          "issue_type": "refund_treated_as_new_expense",
+          "labelled_rows": 75,
+          "predicted_treatment_consistent": 75,
+          "predicted_category_consistent": 0,
+          "absolute_amount_usd": 4682.45
+        },
+        {
+          "issue_type": "timezone_boundary_date",
+          "labelled_rows": 4505,
+          "predicted_treatment_consistent": 4503,
+          "predicted_category_consistent": 4256,
+          "absolute_amount_usd": 536125.43
+        },
+        {
+          "issue_type": "recurring_series_skip",
+          "labelled_series": 30,
+          "skip_flags_found": 30,
+          "skip_recall": 1.0
+        },
+        {
+          "issue_type": "budget_taxonomy_mismatch",
+          "labelled_rows": 2376,
+          "resolved_rows": 2376,
+          "unresolved_rows": 0,
+          "resolution_rate": 1.0,
+          "budget_amount_affected_usd": 1137710.0
+        }
+      ],
+      "manifest_required_types": 5
+    },
+    "exception_handling_score": 1.0,
+    "recurring_detection": {
+      "ground_truth_series": 5253,
+      "detectable_series": 5249,
+      "detected_series": 5609,
+      "matched_series": 5249,
+      "precision": 0.9358,
+      "recall": 1.0,
+      "f1": 0.9668,
+      "false_positives": 360,
+      "false_negatives": 0,
+      "category_accuracy_matched": 1.0,
+      "amount_mape_matched": 0.0003,
+      "next_date_median_abs_error_days": 0.0,
+      "next_date_compared": 4560,
+      "skip_series": 30,
+      "skip_series_flagged": 30,
+      "skip_recall": 1.0,
+      "skip_false_positives": 0,
+      "skip_precision": 1.0,
+      "gt_occurrence_support": 0.9999
+    },
+    "budget_comparison": {
+      "budget_rows": 118784,
+      "comparison_rows": 118784,
+      "resolution_accuracy": 1.0,
+      "resolved_alias_rows": 2376,
+      "unresolved_rows": 0,
+      "status_counts": {
+        "near": 5105,
+        "over": 28286,
+        "under": 85393
+      },
+      "budget_total_usd": 56369145.0,
+      "actual_total_usd": 46580210.96,
+      "variance_total_usd": 9788934.04,
+      "over_budget_rows": 28286,
+      "naive_mismatch_false_under_rows": 2376,
+      "naive_mismatch_budget_affected_usd": 1137710.0
+    },
+    "reconciliation": {
+      "ledger_net_total_usd": 25902413.44,
+      "strict_net_spend_usd": 54015523.3,
+      "monthly_spend_total_usd": 54015523.3,
+      "strict_vs_monthly_delta_usd": 0.0,
+      "account_balance_total_usd": 25902413.44,
+      "ledger_vs_balance_delta_usd": 0.0,
+      "rows": 500000,
+      "months": 12,
+      "profiles": 1000
+    },
+    "data_quality": {
+      "fallback_rate": 0.0,
+      "uncategorized_rate": 0.0492,
+      "mean_confidence": 0.726,
+      "unique_merchants": 82,
+      "descriptor_variants": 26090
+    },
+    "distributions": {
+      "transaction_category_counts": {
+        "DINING": 78832,
+        "EDUCATION": 8325,
+        "ENTERTAINMENT": 25052,
+        "FEES": 8315,
+        "GROCERY": 87332,
+        "HEALTH": 29113,
+        "HOUSING_RENT": 9485,
+        "INCOME_OTHER": 10423,
+        "INCOME_SALARY": 10471,
+        "INSURANCE": 8357,
+        "OTHER": 16645,
+        "REFUND": 6075,
+        "SHOPPING": 53939,
+        "SUBSCRIPTION": 34559,
+        "TRANSFER": 19103,
+        "TRANSPORT": 54356,
+        "TRAVEL": 18669,
+        "UTILITIES": 20949
+      },
+      "treatment_counts": {
+        "income": 20894,
+        "refund": 6075,
+        "spend": 453928,
+        "transfer": 19103
+      },
+      "issue_counts": {
+        "none": 495345,
+        "refund_treated_as_new_expense": 75,
+        "timezone_boundary_date": 4505,
+        "transfer_double_count": 75
+      },
+      "amount_usd": {
+        "mean": 51.8,
+        "median": -39.71,
+        "p05": -560.73,
+        "p95": 342.02
+      },
+      "monthly": [
+        {
+          "period_month": "2026-01",
+          "transactions": 39829,
+          "gross_debits_usd": 4269109.85,
+          "credits_usd": 7216993.64
+        },
+        {
+          "period_month": "2026-02",
+          "transactions": 36195,
+          "gross_debits_usd": 3866426.4,
+          "credits_usd": 7246512.48
+        },
+        {
+          "period_month": "2026-03",
+          "transactions": 40678,
+          "gross_debits_usd": 4474039.71,
+          "credits_usd": 7326996.2
+        },
+        {
+          "period_month": "2026-04",
+          "transactions": 41164,
+          "gross_debits_usd": 4720023.96,
+          "credits_usd": 7278747.18
+        },
+        {
+          "period_month": "2026-05",
+          "transactions": 43021,
+          "gross_debits_usd": 5215849.62,
+          "credits_usd": 7351844.56
+        },
+        {
+          "period_month": "2026-06",
+          "transactions": 42641,
+          "gross_debits_usd": 5982870.98,
+          "credits_usd": 7523193.07
+        },
+        {
+          "period_month": "2026-07",
+          "transactions": 44252,
+          "gross_debits_usd": 6566864.34,
+          "credits_usd": 7489963.69
+        },
+        {
+          "period_month": "2026-08",
+          "transactions": 44664,
+          "gross_debits_usd": 6380620.39,
+          "credits_usd": 7555318.71
+        },
+        {
+          "period_month": "2026-09",
+          "transactions": 40144,
+          "gross_debits_usd": 4887389.81,
+          "credits_usd": 7369981.68
+        },
+        {
+          "period_month": "2026-10",
+          "transactions": 40821,
+          "gross_debits_usd": 4878437.5,
+          "credits_usd": 7245596.72
+        },
+        {
+          "period_month": "2026-11",
+          "transactions": 41551,
+          "gross_debits_usd": 5024777.91,
+          "credits_usd": 7252953.91
+        },
+        {
+          "period_month": "2026-12",
+          "transactions": 45040,
+          "gross_debits_usd": 5961273.29,
+          "credits_usd": 7271995.36
+        }
+      ]
+    }
+  },
+  "notes": [
+    "The pipeline never reads ground_truth/. It is joined only in this evaluation step.",
+    "Strict net spend excludes transfers, offsets refunds, and assigns periods from local transaction dates.",
+    "Naive overstatement is a diagnostic: both transfer legs and refunds are treated as new spending.",
+    "Recurring detection uses monthly gap and amount stability; labels are generated independently from the detector.",
+    "Budget resolution maps deprecated taxonomy codes through category_alias before comparison.",
+    "A boundary-case row that also carries a primary refund/transfer anomaly keeps that primary transaction label; all boundary rows still have ground-truth labels."
+  ]
+}

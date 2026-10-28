@@ -1,0 +1,1084 @@
+{
+  "dataset": "dataset",
+  "seed": 20261022,
+  "scale": "full",
+  "generated_at": "2027-01-15T00:00:00Z",
+  "status": "PASS",
+  "counts": {
+    "pass": 138,
+    "warn": 0,
+    "fail": 0
+  },
+  "known_exceptions": {
+    "budget_taxonomy_mismatch": 2376,
+    "recurring_series_skip": 30,
+    "refund_treated_as_new_expense": 75,
+    "timezone_boundary_date": 4505,
+    "transfer_double_count": 75
+  },
+  "row_counts": {
+    "user_profile": 1000,
+    "account": 2335,
+    "merchant": 82,
+    "merchant_alias": 246,
+    "category": 25,
+    "category_alias": 5,
+    "category_rule": 258,
+    "budget": 118784,
+    "transaction": 500000,
+    "transfer_link": 9514,
+    "recurring_series": 5609,
+    "insight": 59185,
+    "entity_event": 3430
+  },
+  "checks": [
+    {
+      "check": "user_profile.user_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "user_profile not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 1000
+    },
+    {
+      "check": "account.account_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "account not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 2335
+    },
+    {
+      "check": "merchant.merchant_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "merchant not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 82
+    },
+    {
+      "check": "merchant_alias.alias_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "merchant_alias not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 246
+    },
+    {
+      "check": "category.category_code unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "category not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 25
+    },
+    {
+      "check": "category_alias.alias_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "category_alias not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 5
+    },
+    {
+      "check": "category_rule.rule_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "category_rule not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 258
+    },
+    {
+      "check": "budget.budget_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 118784
+    },
+    {
+      "check": "transaction.transaction_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transaction not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 500000
+    },
+    {
+      "check": "transfer_link.link_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transfer_link not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 9514
+    },
+    {
+      "check": "recurring_series.series_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "recurring_series not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 5609
+    },
+    {
+      "check": "insight.insight_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "insight not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 59185
+    },
+    {
+      "check": "entity_event.event_id unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "entity_event not empty",
+      "status": "PASS",
+      "note": "",
+      "expected": ">0",
+      "actual": 3430
+    },
+    {
+      "check": "FK account.user_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK merchant.default_category_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK merchant_alias.merchant_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK category_alias.alias_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK category_alias.canonical_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK category_rule.category_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK category_rule.merchant_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK category.parent_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK budget.user_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK budget.category_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transaction.user_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transaction.account_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transaction.merchant_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transaction.refund_of_txn_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transfer_link.debit_txn_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK transfer_link.credit_txn_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK recurring_series.user_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK recurring_series.account_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK recurring_series.merchant_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK recurring_series.category_code",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "FK insight.user_id",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "user_id nomenclature",
+      "status": "PASS",
+      "note": "",
+      "expected": "USR-000001",
+      "actual": "checked all users"
+    },
+    {
+      "check": "account_id nomenclature",
+      "status": "PASS",
+      "note": "",
+      "expected": "ACC-<user-id>-01",
+      "actual": "checked all accounts"
+    },
+    {
+      "check": "transaction_id nomenclature",
+      "status": "PASS",
+      "note": "",
+      "expected": "TXN-2026-00000001",
+      "actual": "checked all transactions"
+    },
+    {
+      "check": "budget_id nomenclature",
+      "status": "PASS",
+      "note": "",
+      "expected": "BUD-<user-id>-2026-01-<category>",
+      "actual": "checked all budgets"
+    },
+    {
+      "check": "series_id nomenclature",
+      "status": "PASS",
+      "note": "",
+      "expected": "REC-000001",
+      "actual": "checked detected series"
+    },
+    {
+      "check": "transaction_id sequence",
+      "status": "PASS",
+      "note": "",
+      "expected": "1..N contiguous",
+      "actual": 500000
+    },
+    {
+      "check": "no ground truth columns in transaction input",
+      "status": "PASS",
+      "note": "",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "check": "enum user_profile.lifecycle_state",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "closed",
+        "dormant"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum user_profile.risk_tier",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum user_profile.segment",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "plus",
+        "premium",
+        "standard"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum account.account_type",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "checking",
+        "credit_card",
+        "savings"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum account.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "closed",
+        "frozen"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum merchant.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "inactive"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum category.type",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "expense",
+        "income",
+        "refund",
+        "transfer"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum category_rule.match_type",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "contains",
+        "exact",
+        "regex"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum category_rule.match_field",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "descriptor",
+        "mcc",
+        "merchant"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum category_rule.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "retired"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum budget.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "closed",
+        "draft"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum transaction.channel",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "ach",
+        "atm",
+        "card",
+        "internal",
+        "online",
+        "pos"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum transaction.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "pending",
+        "posted",
+        "reversed"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum recurring_series.status",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "active",
+        "cancelled",
+        "ended",
+        "paused"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum recurring_series.cadence",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "annual",
+        "biweekly",
+        "monthly",
+        "quarterly",
+        "weekly"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum insight.insight_type",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "budget_variance_summary",
+        "data_quality_summary",
+        "monthly_spend_summary",
+        "recurring_summary"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "enum ground_truth.true_treatment",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "excluded",
+        "income",
+        "refund",
+        "spend",
+        "transfer"
+      ],
+      "actual": 0
+    },
+    {
+      "check": "account opened after user creation",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transaction posted after account open",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transaction posted before account close",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "no activity after dormant/closed cutoff",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "refund date not before original",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "refund positive and bounded by original",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transfer pairs same date and net zero",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget period aligns with year/month",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget start before end",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "recurring first occurrence before last",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "active recurring series has next date",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "ground-truth period uses local date",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "recurring posted counts reconcile",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "all required edge-case types present",
+      "status": "PASS",
+      "note": "",
+      "expected": [
+        "budget_taxonomy_mismatch",
+        "recurring_series_skip",
+        "refund_treated_as_new_expense",
+        "timezone_boundary_date",
+        "transfer_double_count"
+      ],
+      "actual": []
+    },
+    {
+      "check": "transfer_double_count labels match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 75,
+      "actual": 75
+    },
+    {
+      "check": "refund_treated_as_new_expense labels match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 75,
+      "actual": 75
+    },
+    {
+      "check": "timezone_boundary_date labels match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 4505,
+      "actual": 4505
+    },
+    {
+      "check": "every UTC/local month boundary case is labelled",
+      "status": "PASS",
+      "note": "4506 boundary rows; 1 unlabelled.",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "timezone anomaly labels match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 4505,
+      "actual": 4505
+    },
+    {
+      "check": "recurring skip series labels match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 30,
+      "actual": 30
+    },
+    {
+      "check": "recurring skip expectations reconcile",
+      "status": "PASS",
+      "note": "",
+      "expected": 30,
+      "actual": 30
+    },
+    {
+      "check": "budget mismatch labels match manifest impact",
+      "status": "PASS",
+      "note": "",
+      "expected": 2376,
+      "actual": 2376
+    },
+    {
+      "check": "inactive budget categories are fully labelled",
+      "status": "PASS",
+      "note": "Intentional taxonomy mismatch cases are labelled in budget_labels.csv.",
+      "expected": 2376,
+      "actual": 2376
+    },
+    {
+      "check": "transfer treatment/category consistent",
+      "status": "PASS",
+      "note": "",
+      "expected": 19103,
+      "actual": 19103
+    },
+    {
+      "check": "refund ground truth has positive amounts",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transaction user matches account owner",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "refund owner matches original",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "refund account matches original",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transfer legs have same owner",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "transfer legs use different accounts",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "recurring series owner matches account",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "event user references valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "event account references valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "lifecycle transition states valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "lifecycle event ordering valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "lifecycle terminal states match entities",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "no duplicate lifecycle event types per entity",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "account balances reconcile to ledger",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "ledger total equals sum of account balances",
+      "status": "PASS",
+      "note": "",
+      "expected": 25902413.44,
+      "actual": 25902413.44
+    },
+    {
+      "check": "transaction amounts nonzero",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "posted transaction share",
+      "status": "PASS",
+      "note": "",
+      "expected": ">=99%",
+      "actual": 1.0
+    },
+    {
+      "check": "decision coverage equals transactions",
+      "status": "PASS",
+      "note": "",
+      "expected": 500000,
+      "actual": 500000
+    },
+    {
+      "check": "categorized coverage equals transactions",
+      "status": "PASS",
+      "note": "",
+      "expected": 500000,
+      "actual": 500000
+    },
+    {
+      "check": "decision transaction uniqueness",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "every transaction has a decision",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "decision categories valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "decision confidence in [0,1]",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "predicted treatments valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "monthly spend reconciles to categorized ledger",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "every budget has comparison row",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget comparison amounts reconcile",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget comparison statuses valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "resolved budget categories are active",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "budget actuals reconcile to ledger",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "insight metrics reconcile to outputs",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "recurring insights reconcile to detected series",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "manifest seed present",
+      "status": "PASS",
+      "note": "",
+      "expected": "int",
+      "actual": "int"
+    },
+    {
+      "check": "manifest row count for transactions",
+      "status": "PASS",
+      "note": "",
+      "expected": 500000,
+      "actual": 500000
+    },
+    {
+      "check": "manifest checksums verify",
+      "status": "PASS",
+      "note": "verified 47 files",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "row counts match manifest",
+      "status": "PASS",
+      "note": "",
+      "expected": 500000,
+      "actual": 500000
+    },
+    {
+      "check": "ground truth covers every transaction",
+      "status": "PASS",
+      "note": "",
+      "expected": 500000,
+      "actual": 500000
+    },
+    {
+      "check": "ground truth IDs valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "ground truth covers every budget",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "ground-truth categories valid",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "ground truth labels unique",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "no unintended exact duplicate transactions",
+      "status": "PASS",
+      "note": "",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "check": "all 12 months covered",
+      "status": "PASS",
+      "note": "",
+      "expected": "12 months",
+      "actual": 12
+    }
+  ]
+}

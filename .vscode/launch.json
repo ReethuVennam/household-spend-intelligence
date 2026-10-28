@@ -1,0 +1,68 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "1. Full pipeline (generate + validate + evaluate + dashboard)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["all", "--scale", "full", "--seed", "20261022", "--out", "dataset", "--formats", "csv,json,sql"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "2. Mini quick run (2k txns, <1 min)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["all", "--scale", "mini", "--seed", "20261022", "--out", "dataset"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Generate only",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["generate", "--scale", "full", "--seed", "20261022", "--out", "dataset", "--formats", "csv,json,sql"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Validate",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["validate", "--dataset", "dataset"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Evaluate",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["evaluate", "--dataset", "dataset"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Build dashboard",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["dashboard", "--dataset", "dataset"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Reproduce (seed proof)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.cli",
+      "args": ["reproduce", "--scale", "mini", "--seed", "20261022", "--formats", "csv", "--out", "dataset"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

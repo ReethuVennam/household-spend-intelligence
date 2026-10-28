@@ -1,0 +1,329 @@
+{
+  "anomaly_counts": {
+    "budget_taxonomy_mismatch": 1,
+    "recurring_series_skip": 30,
+    "refund_treated_as_new_expense": 75,
+    "timezone_boundary_date": 4505,
+    "transfer_double_count": 75
+  },
+  "anomaly_impact_counts": {
+    "budget_taxonomy_mismatch": 2376,
+    "recurring_series_skip": 30,
+    "refund_treated_as_new_expense": 75,
+    "timezone_boundary_date": 4505,
+    "transfer_double_count": 75
+  },
+  "counts": {
+    "accounts": 2335,
+    "budgets": 118784,
+    "categories": 25,
+    "category_rules": 258,
+    "events": 3430,
+    "insights": 59185,
+    "merchants": 82,
+    "profiles": 1000,
+    "recurring_series": 5609,
+    "transactions": 500000,
+    "transfer_links": 9514
+  },
+  "files": {
+    "README.md": {
+      "bytes": 1133,
+      "format": "markdown",
+      "rows": 0,
+      "sha256": "db29fb7af02efd24da6950fa202e2c2d22c6d2afac42b6cfefc74ddd9e081f55"
+    },
+    "data/account.csv": {
+      "bytes": 244093,
+      "format": "csv",
+      "rows": 2335,
+      "sha256": "cb126931dc501a26fc7627e61bb903e9f75420778977c27fbfcac80d06b3d90b"
+    },
+    "data/budget.csv": {
+      "bytes": 17031517,
+      "format": "csv",
+      "rows": 118784,
+      "sha256": "3f21dfb6dbd2b184b38a57ff4c9de835f33522d364920720273aa452940fb126"
+    },
+    "data/category.csv": {
+      "bytes": 1709,
+      "format": "csv",
+      "rows": 25,
+      "sha256": "a7e146aecb8210e13ad8610b463b554992868418c939a17244cff770b88d1da8"
+    },
+    "data/category_alias.csv": {
+      "bytes": 578,
+      "format": "csv",
+      "rows": 5,
+      "sha256": "7f27695b8a5b839e6768b5411baef4156d32797df27b095bb3a8e4a2662b14eb"
+    },
+    "data/category_rule.csv": {
+      "bytes": 24768,
+      "format": "csv",
+      "rows": 258,
+      "sha256": "486a14bd0905ddb85470ed5c80136e42c434758d0cb3a24b463b5bd914bfd75d"
+    },
+    "data/entity_event.csv": {
+      "bytes": 410877,
+      "format": "csv",
+      "rows": 3430,
+      "sha256": "16ca185e9f4183727a07471b352845f2f79f236d8e313da193b171562d7a1d6f"
+    },
+    "data/insight.csv": {
+      "bytes": 12633001,
+      "format": "csv",
+      "rows": 59185,
+      "sha256": "cd32b616374b8f142f8368ef6d4bf2c5d8f0d927306977dd469463e8003a2552"
+    },
+    "data/json/account.json": {
+      "bytes": 684594,
+      "format": "json",
+      "rows": 2335,
+      "sha256": "2fcb80e161c64dfa27daaceb5c3bff90edd9e7745f88ae292d0ea8584592a942"
+    },
+    "data/json/budget.jsonl.gz": {
+      "bytes": 1123448,
+      "format": "json",
+      "rows": 118784,
+      "sha256": "d9b6b3a0fe94fcdf2cbfdd587ddddd3e501246f7b5d398e9b06136df3a30d552"
+    },
+    "data/json/category.json": {
+      "bytes": 5124,
+      "format": "json",
+      "rows": 25,
+      "sha256": "549b46c35a36cb83e1fc3f99fcfe4bc0624e49e61ff4b93e38c1502845fc4cb1"
+    },
+    "data/json/category_alias.json": {
+      "bytes": 1037,
+      "format": "json",
+      "rows": 5,
+      "sha256": "c732965817fe787d39ff961bb20441af7bc92ae6d6ed655504528c1877e172c3"
+    },
+    "data/json/category_rule.json": {
+      "bytes": 65575,
+      "format": "json",
+      "rows": 258,
+      "sha256": "93ed136353e2c26a5a32057ff02d42d004260b7ec96b1594f522cee6c529ee1c"
+    },
+    "data/json/entity_event.json": {
+      "bytes": 832683,
+      "format": "json",
+      "rows": 3430,
+      "sha256": "bd4ca72de5d51651fa38cffba649382dc42f46217be00c6c6e89b844efc0b707"
+    },
+    "data/json/insight.jsonl.gz": {
+      "bytes": 1047427,
+      "format": "json",
+      "rows": 59185,
+      "sha256": "c88d5e5cb0eeec3bfc84e9d350cb489811fb987aa4eb82c818f43485ab1f52b1"
+    },
+    "data/json/merchant.json": {
+      "bytes": 21224,
+      "format": "json",
+      "rows": 82,
+      "sha256": "cde9636a422b6d2c04316242c28b1deb60adf44be6869ef41bf5c460462b5f3f"
+    },
+    "data/json/merchant_alias.json": {
+      "bytes": 36100,
+      "format": "json",
+      "rows": 246,
+      "sha256": "9a1c64b08e188b22a36baf0974eb45c5e8137052f14a79dc548f80ebb7c57b05"
+    },
+    "data/json/recurring_series.json": {
+      "bytes": 2561715,
+      "format": "json",
+      "rows": 5609,
+      "sha256": "d101a479d994b21846ea9cfbf41663f0687b024c5955551a6e4ad79f0ed7f123"
+    },
+    "data/json/transaction.jsonl.gz": {
+      "bytes": 14549570,
+      "format": "json",
+      "rows": 500000,
+      "sha256": "36ebd032b73701e490f53f2196eed00f4761c8342d5f591163487e3d1b917a90"
+    },
+    "data/json/transfer_link.json": {
+      "bytes": 1981400,
+      "format": "json",
+      "rows": 9514,
+      "sha256": "452a82fcfaa253b4695aae6905aa312adca8ee3e7c675427d619e39193663188"
+    },
+    "data/json/user_profile.json": {
+      "bytes": 536031,
+      "format": "json",
+      "rows": 1000,
+      "sha256": "90c63e7310f53f39d97ad88e5c9c3f375a926f08a335037bccdc7a5587addb85"
+    },
+    "data/merchant.csv": {
+      "bytes": 6682,
+      "format": "csv",
+      "rows": 82,
+      "sha256": "69ae94763a44f4000546ede3867814acc21dc4287898c006602e817cd8489b85"
+    },
+    "data/merchant_alias.csv": {
+      "bytes": 12799,
+      "format": "csv",
+      "rows": 246,
+      "sha256": "5ae2f6c4484b115b969098633dd2bb757a30999ed7f627b8c2c796a498f5497e"
+    },
+    "data/recurring_series.csv": {
+      "bytes": 1013848,
+      "format": "csv",
+      "rows": 5609,
+      "sha256": "0ffe801d0bf0660f5210d7195dfaf87336d585f6461ed22ade0d6c7801cb5a34"
+    },
+    "data/sql/ground_truth_schema.sql": {
+      "bytes": 1856,
+      "format": "sql",
+      "rows": 0,
+      "sha256": "68b2374e699801c0fed55278e75af356f34b973217bea34a99df8d55eb26e54e"
+    },
+    "data/sql/schema.sql": {
+      "bytes": 8647,
+      "format": "sql",
+      "rows": 0,
+      "sha256": "38441db13008c0cd5069a19a94c5e4d214dcf7c2552450b9d88e385745ce6347"
+    },
+    "data/sql/seed.sql": {
+      "bytes": 127032932,
+      "format": "sql",
+      "rows": 700473,
+      "sha256": "89432ee365a862863a868522b1aeb11c430173f43ed71edaa8d720b589154a16"
+    },
+    "data/sql/seed_ground_truth.sql": {
+      "bytes": 61708574,
+      "format": "sql",
+      "rows": 687453,
+      "sha256": "9ed4df5771b0ecf96c1425c2fbd6995e19da2ae3f00c31742834650c22593d5c"
+    },
+    "data/transaction.csv": {
+      "bytes": 67868989,
+      "format": "csv",
+      "rows": 500000,
+      "sha256": "c9b823b9f474c255a04cbdbd886df6e121809d4903c04f9e17e10cb30e539d52"
+    },
+    "data/transfer_link.csv": {
+      "bytes": 944454,
+      "format": "csv",
+      "rows": 9514,
+      "sha256": "782a2d4e458a0473e20b60a0b641a335cfa039ed40aafbccb284acd443170220"
+    },
+    "data/user_profile.csv": {
+      "bytes": 218269,
+      "format": "csv",
+      "rows": 1000,
+      "sha256": "c0945d23682d2c876e3c2917705ca84deec76752ad377bec8a6838c8676a550b"
+    },
+    "ground_truth/anomaly_manifest.csv": {
+      "bytes": 1072065,
+      "format": "csv",
+      "rows": 4686,
+      "sha256": "c75b2b76d3ec9c5aeed8afeb1355569b49b7816bd9703448b23ab0068055275a"
+    },
+    "ground_truth/anomaly_manifest.json": {
+      "bytes": 1803320,
+      "format": "json",
+      "rows": 4686,
+      "sha256": "2fedaac987ca3b9346a514d4ab22baccda59a737ae7b3df7e0b52fd6d9d57ce2"
+    },
+    "ground_truth/budget_labels.csv": {
+      "bytes": 10365928,
+      "format": "csv",
+      "rows": 118784,
+      "sha256": "a179d2522e5f8c0daa1875874620e2b4ad8ed5cd6d2d634a8d158d9271299fa9"
+    },
+    "ground_truth/budget_labels.jsonl.gz": {
+      "bytes": 1029795,
+      "format": "json",
+      "rows": 118784,
+      "sha256": "1070c0a456789a4ff8e736f1ba11922408aca974f50e7a331808565965db788f"
+    },
+    "ground_truth/recurring_expectations.csv": {
+      "bytes": 2143048,
+      "format": "csv",
+      "rows": 58730,
+      "sha256": "fb62bf589c157fa68e2e6c336dc8aea3e62fc8d36bbd4b51dce4729a7e5617a9"
+    },
+    "ground_truth/recurring_expectations.jsonl.gz": {
+      "bytes": 187860,
+      "format": "json",
+      "rows": 58730,
+      "sha256": "c32eeceaac91fa64830fc7b4ed5d5c6383e7d5d8eaa4ae91a6e927469c3f757a"
+    },
+    "ground_truth/recurring_series_labels.csv": {
+      "bytes": 725266,
+      "format": "csv",
+      "rows": 5253,
+      "sha256": "4b975d31c312e8823e143f3fcaee3223522ec21a1b6ce57a61b2586e5a0ecb52"
+    },
+    "ground_truth/recurring_series_labels.json": {
+      "bytes": 2258913,
+      "format": "json",
+      "rows": 5253,
+      "sha256": "c7f79869b25a25b8df2c886412380feca5490ba147707c6dc19f332292cb8926"
+    },
+    "ground_truth/transaction_labels.csv": {
+      "bytes": 26972892,
+      "format": "csv",
+      "rows": 500000,
+      "sha256": "3ba45e90c49accd42715c3ecbb2dcc05bcc072c9667d7eb4b2720079dc56d081"
+    },
+    "ground_truth/transaction_labels.jsonl.gz": {
+      "bytes": 2740907,
+      "format": "json",
+      "rows": 500000,
+      "sha256": "041ab36bbf0f08b36753341d712c8fba201f1bfab6e54b3c7c2a6ff61bc80427"
+    },
+    "metadata/source_manifest.json": {
+      "bytes": 765,
+      "format": "json",
+      "rows": 0,
+      "sha256": "f7ebde33bd037d3220b436e5d7c3240edb21ca6b3fa710a7bb74339fdd0500a1"
+    },
+    "outputs/budget_comparison.csv": {
+      "bytes": 13127233,
+      "format": "csv",
+      "rows": 118784,
+      "sha256": "9a582d95f18ebba00220f15a26e2e7aaf94290d60b6a5333d47900dd9e84580a"
+    },
+    "outputs/categorization_decisions.csv": {
+      "bytes": 50791060,
+      "format": "csv",
+      "rows": 500000,
+      "sha256": "9ae8df29518c48ee7eea243ca3c5715225ac16371243808e910f106b343de728"
+    },
+    "outputs/categorized_transactions.csv": {
+      "bytes": 79151074,
+      "format": "csv",
+      "rows": 500000,
+      "sha256": "7c87a23c5e891843a4357824ae314e4b97d6d0765b9892fe281098614b9b79d7"
+    },
+    "outputs/monthly_spend.csv": {
+      "bytes": 494336,
+      "format": "csv",
+      "rows": 11837,
+      "sha256": "4b86972860183e5abd4b6e8ed3188f773ea1953937d11b4f626eb6602c64b9ae"
+    },
+    "outputs/recurring_series.csv": {
+      "bytes": 1013848,
+      "format": "csv",
+      "rows": 5609,
+      "sha256": "0ffe801d0bf0660f5210d7195dfaf87336d585f6461ed22ade0d6c7801cb5a34"
+    }
+  },
+  "formats": [
+    "csv",
+    "json",
+    "sql"
+  ],
+  "generated_at": "2027-01-15T00:00:00Z",
+  "generator_version": "1.0.0",
+  "profiles": 1000,
+  "project_version": "1.0.0",
+  "scale": "full",
+  "schema_version": "1.0.0",
+  "seed": 20261022,
+  "total_bytes": 506488964,
+  "transaction_target": 500000,
+  "transactions": 500000,
+  "year": 2026
+}

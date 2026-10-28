@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Bulk generated data (483 MB) — regenerate with:
+#   python -m src.cli all --scale full --seed 20261022 --out dataset --formats csv,json,sql
+dataset/data/
+dataset/**/*.gz
+dataset/outputs/*.csv
+dataset/ground_truth/*.csv
+dataset/ground_truth/*.json
+!dataset/ground_truth/anomaly_manifest.csv

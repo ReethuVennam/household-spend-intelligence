@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install dependencies",
+      "type": "shell",
+      "command": "python -m pip install -r requirements.txt",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run full pipeline",
+      "type": "shell",
+      "command": "python -m src.cli all --scale full --seed 20261022 --out dataset --formats csv,json,sql",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Generate, validate, evaluate, and build the dashboard"
+    },
+    {
+      "label": "Validate only",
+      "type": "shell",
+      "command": "python -m src.cli validate --dataset dataset",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Evaluate only",
+      "type": "shell",
+      "command": "python -m src.cli evaluate --dataset dataset",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Rebuild dashboard",
+      "type": "shell",
+      "command": "python -m src.cli dashboard --dataset dataset",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Open dashboard in browser",
+      "type": "shell",
+      "command": "start dataset\\dashboard.html",
+      "windows": {
+        "command": "start dataset\\dashboard.html"
+      },
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Household Spend Intelligence - Dashboard</title>
+<style>
+:root{
+  --bg:#f4f6fb; --card:#ffffff; --line:#e6ebf2; --ink:#0f172a; --mid:#64748b;
+  --blue:#3b82f6; --green:#10b981; --amber:#f59e0b; --red:#ef4444;
+  --indigo:#6366f1; --purple:#8b5cf6; --teal:#14b8a6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px 56px}
+header{background:linear-gradient(115deg,#111827 0%,#1e293b 45%,#312e81 100%);color:#fff;padding:34px 0 26px;
+  border-bottom:4px solid #6366f1}
+.head-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+h1{margin:0 0 8px;font-size:29px;letter-spacing:-.02em;font-weight:800}
+.tagline{color:#cbd5e1;font-size:14px;max-width:640px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#e2e8f0;
+  padding:4px 11px;border-radius:999px;font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
+.badge.ok{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.5);color:#a7f3d0}
+.status-box{text-align:right;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:14px 20px;min-width:190px}
+.status-box .s-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#94a3b8}
+.status-box .s-value{font-size:24px;font-weight:800;color:#6ee7b7;margin-top:3px}
+.status-box .s-sub{font-size:12px;color:#cbd5e1;margin-top:2px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+nav a{color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;padding:7px 14px;
+  border-radius:999px;border:1px solid rgba(255,255,255,.15);transition:.15s}
+nav a:hover{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.35)}
+section{margin-top:34px;scroll-margin-top:16px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.sec-head .dot{width:11px;height:11px;border-radius:4px;background:var(--indigo);box-shadow:0 0 0 4px rgba(99,102,241,.16)}
+.sec-head h2{margin:0;font-size:19px;letter-spacing:-.01em}
+.sec-head .hint{color:var(--mid);font-size:12.5px;margin-left:4px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -18px rgba(15,23,42,.25)}
+.card h3{margin:0 0 14px;font-size:14.5px;color:#334155;font-weight:700}
+.grid{display:grid;gap:13px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(196px,1fr))}
+.mini{grid-template-columns:repeat(auto-fit,minmax(158px,1fr))}
+.kpi{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:16px 17px 15px;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.05);
+  transition:transform .12s,box-shadow .12s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 10px 26px -14px rgba(15,23,42,.4)}
+.kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent,var(--indigo))}
+.kpi-label{font-size:11px;color:var(--mid);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
+.kpi-value{font-size:23px;font-weight:800;margin-top:7px;letter-spacing:-.02em;color:var(--ink)}
+.kpi-sub{font-size:11.5px;color:var(--mid);margin-top:4px}
+.kpi.mini{padding:13px 15px}
+.kpi.mini .kpi-value{font-size:19px}
+table{border-collapse:collapse;width:100%;font-size:13.2px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{background:#f8fafc;font-weight:700;font-size:11.5px;color:#475569;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:hover{background:#f8fafc}
+td.right,th.right{text-align:right}
+td.nowrap{white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.pill.ok{background:#d1fae5;color:#065f46}
+.pill.warn{background:#fef3c7;color:#92400e}
+.pill.bad{background:#fee2e2;color:#991b1b}
+.pill.info{background:#e0e7ff;color:#3730a3}
+.meter{background:#eef2f7;border-radius:999px;height:9px;width:140px;overflow:hidden;display:inline-block;vertical-align:middle}
+.meter span{display:block;height:100%;border-radius:999px}
+.split{display:grid;grid-template-columns:360px 1fr;gap:16px}
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stack{display:grid;gap:16px}
+@media(max-width:900px){.split,.split2{grid-template-columns:1fr}}
+.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:#334155;font-weight:600;margin-top:12px}
+.legend .item{display:flex;align-items:center;gap:8px}
+.swatch{width:12px;height:12px;border-radius:4px;display:inline-block}
+.note{font-size:12.2px;color:var(--mid);margin-top:12px;line-height:1.55}
+.donut-wrap{display:flex;justify-content:center;padding:6px 0 2px}
+.status-list{margin-top:14px;display:grid;gap:9px}
+.status-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;
+  background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:9px 13px}
+.status-row .left{display:flex;align-items:center;gap:9px;font-weight:600}
+.status-row .num{font-weight:700;font-variant-numeric:tabular-nums}
+.reports{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px}
+.report{display:block;background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:15px 17px;
+  text-decoration:none;color:inherit;transition:.13s}
+.report:hover{background:#fff;border-color:#c7d2fe;box-shadow:0 8px 22px -14px rgba(79,70,229,.55);transform:translateY(-2px)}
+.report .r-title{font-weight:700;font-size:14px;color:#4338ca}
+.report .r-desc{font-size:12.3px;color:var(--mid);margin-top:5px;line-height:1.5}
+.footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:12.3px;color:var(--mid)}
+.center{text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="head-top">
+      <div>
+        <h1>Household Spend Intelligence</h1>
+        <div class="tagline">Deterministic synthetic household spending analytics &mdash; categorization, recurring payment detection, budget comparison, labelled exceptions, and reproducible evaluation.</div>
+        <div class="badges">
+          <span class="badge">seed 20,261,022</span>
+          <span class="badge">full scale</span>
+          <span class="badge">500,000 transactions</span>
+          <span class="badge">1,000 profiles</span>
+          <span class="badge">generated 2027-01-15T00:00:00Z</span>
+        </div>
+      </div>
+      <div class="status-box">
+        <div class="s-label">Validation</div>
+        <div class="s-value">PASS</div>
+        <div class="s-sub">138 passed &middot; 0 warn &middot; 0 fail</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#spend">Spend</a>
+      <a href="#budgets">Budgets</a>
+      <a href="#recurring">Recurring</a>
+      <a href="#exceptions">Exceptions</a>
+      <a href="#reports">Reports</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+
+<section id="overview">
+  <div class="sec-head"><span class="dot"></span><h2>Overview</h2><span class="hint">headline figures and scorecard against ground truth</span></div>
+  <div class="grid kpis"><div class="kpi" style="--accent:#6366f1"><div class="kpi-label">Transactions</div><div class="kpi-value">500,000</div><div class="kpi-sub">full scale, year 2026</div></div><div class="kpi" style="--accent:#0ea5e9"><div class="kpi-label">Profiles</div><div class="kpi-value">1,000</div><div class="kpi-sub">2,335 accounts</div></div><div class="kpi" style="--accent:#10b981"><div class="kpi-label">Budgets</div><div class="kpi-value">118,784</div><div class="kpi-sub">5,609 detected recurring series</div></div><div class="kpi" style="--accent:#f59e0b"><div class="kpi-label">Strict net spend</div><div class="kpi-value">$54.0M</div><div class="kpi-sub">transfers and refunds excluded</div></div><div class="kpi" style="--accent:#ef4444"><div class="kpi-label">Overstatement avoided</div><div class="kpi-value">$16.1M</div><div class="kpi-sub">naive minus strict spend</div></div><div class="kpi" style="--accent:#8b5cf6"><div class="kpi-label">Categorization</div><div class="kpi-value">95.12%</div><div class="kpi-sub">macro F1 0.9647</div></div><div class="kpi" style="--accent:#14b8a6"><div class="kpi-label">Recurring F1</div><div class="kpi-value">0.9668</div><div class="kpi-sub">recall 100.0%, precision 93.6%</div></div><div class="kpi" style="--accent:#2563eb"><div class="kpi-label">Validation</div><div class="kpi-value">PASS</div><div class="kpi-sub">138/138 checks passed</div></div></div>
+  <div class="card" style="margin-top:16px">
+    <h3>Scorecard against ground truth</h3>
+    <table><thead><tr><th class="left">Metric</th><th class="right">Result</th><th class="left">Score</th><th class="left">Detail</th></tr></thead><tbody><tr><td class="left">Categorization accuracy</td><td class="right">95.12%</td><td class="left"><span class="meter"><span style="width:95.1%;background:#10b981"></span></span></td><td class="left">macro F1 0.9647, coverage 100.0%</td></tr><tr><td class="left">Treatment accuracy</td><td class="right">99.96%</td><td class="left"><span class="meter"><span style="width:100.0%;background:#10b981"></span></span></td><td class="left">support 500,000 labelled transactions</td></tr><tr><td class="left">Local-period accuracy</td><td class="right">100.00%</td><td class="left"><span class="meter"><span style="width:100.0%;background:#10b981"></span></span></td><td class="left">UTC baseline 99.10% across 4,506 boundary cases</td></tr><tr><td class="left">Recurring precision</td><td class="right">0.936</td><td class="left"><span class="meter"><span style="width:93.6%;background:#f59e0b"></span></span></td><td class="left">matched series of all detected series</td></tr><tr><td class="left">Recurring recall</td><td class="right">1.000</td><td class="left"><span class="meter"><span style="width:100.0%;background:#10b981"></span></span></td><td class="left">detectable ground-truth series found</td></tr><tr><td class="left">Recurring F1</td><td class="right">0.967</td><td class="left"><span class="meter"><span style="width:96.7%;background:#10b981"></span></span></td><td class="left">skip recall 100.0%, skip precision 100.0%</td></tr><tr><td class="left">Budget taxonomy resolution</td><td class="right">100.0%</td><td class="left"><span class="meter"><span style="width:100.0%;background:#10b981"></span></span></td><td class="left">2,376 legacy-code rows resolved, 0 unresolved</td></tr><tr><td class="left">Exception handling score</td><td class="right">1.00</td><td class="left"><span class="meter"><span style="width:100.0%;background:#10b981"></span></span></td><td class="left">2,376 false &#x27;under&#x27; rows avoided by alias mapping</td></tr></tbody></table><table><thead><tr><th class="left">Additional measure</th><th class="right">Value</th><th class="left">Status</th><th class="left">Detail</th></tr></thead><tbody><tr><td class="left">Strict net spend</td><td class="right">$54,015,523.30</td><td class="left"><span class="pill info">in report</span></td><td class="left">naive overstatement avoided $16,122,233.08</td></tr><tr><td class="left">Transfers / refunds handled</td><td class="right">19,103 / 6,075</td><td class="left"><span class="pill info">rules</span></td><td class="left">19,103 transfer legs, 6,075 refund credits</td></tr><tr><td class="left">Data quality</td><td class="right">95.1%</td><td class="left"><span class="meter"><span style="width:95.1%;background:#10b981"></span></span></td><td class="left">fallback 0.0%, mean confidence 0.726</td></tr><tr><td class="left">Validation</td><td class="right">PASS 138/138</td><td class="left"><span class="pill ok">PASS</span></td><td class="left">0 warnings, 0 failures across PK/FK/reconciliation checks</td></tr></tbody></table>
+    <div class="note">Score bars: green at &ge;95%, amber at &ge;80%, red below. Ground truth is held in <code>dataset/ground_truth/</code> and never joined into pipeline features.</div>
+  </div>
+</section>
+
+<section id="spend">
+  <div class="sec-head"><span class="dot" style="background:#3b82f6;box-shadow:0 0 0 4px rgba(59,130,246,.16)"></span><h2>Spend and income</h2><span class="hint">strict ledger, local period months</span></div>
+  <div class="stack">
+    <div class="card">
+      <h3>Monthly spend versus income (all households)</h3>
+      <svg viewBox="0 0 840 330" width="100%" role="img" aria-label="Monthly spend versus income"><defs><linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient><linearGradient id="gi" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs><line x1="70" y1="278.0" x2="822" y2="278.0" stroke="#eef1f6" stroke-width="1"/><text x="61" y="282.0" text-anchor="end" font-size="11" fill="#94a3b8">$0</text><line x1="70" y1="213.5" x2="822" y2="213.5" stroke="#eef1f6" stroke-width="1"/><text x="61" y="217.5" text-anchor="end" font-size="11" fill="#94a3b8">$1.9M</text><line x1="70" y1="149.0" x2="822" y2="149.0" stroke="#eef1f6" stroke-width="1"/><text x="61" y="153.0" text-anchor="end" font-size="11" fill="#94a3b8">$3.8M</text><line x1="70" y1="84.5" x2="822" y2="84.5" stroke="#eef1f6" stroke-width="1"/><text x="61" y="88.5" text-anchor="end" font-size="11" fill="#94a3b8">$5.6M</text><line x1="70" y1="20.0" x2="822" y2="20.0" stroke="#eef1f6" stroke-width="1"/><text x="61" y="24.0" text-anchor="end" font-size="11" fill="#94a3b8">$7.5M</text><rect x="80.5" y="148.1" width="18.8" height="129.9" fill="url(#gs)" rx="4"/><rect x="103.3" y="46.6" width="18.8" height="231.4" fill="url(#gi)" rx="4"/><text x="101.3" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Jan</text><rect x="143.2" y="163.4" width="18.8" height="114.6" fill="url(#gs)" rx="4"/><rect x="166.0" y="46.9" width="18.8" height="231.1" fill="url(#gi)" rx="4"/><text x="164.0" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Feb</text><rect x="205.9" y="143.8" width="18.8" height="134.2" fill="url(#gs)" rx="4"/><rect x="228.7" y="45.4" width="18.8" height="232.6" fill="url(#gi)" rx="4"/><text x="226.7" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Mar</text><rect x="268.5" y="134.1" width="18.8" height="143.9" fill="url(#gs)" rx="4"/><rect x="291.3" y="46.0" width="18.8" height="232.0" fill="url(#gi)" rx="4"/><text x="289.3" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Apr</text><rect x="331.2" y="117.8" width="18.8" height="160.2" fill="url(#gs)" rx="4"/><rect x="354.0" y="44.3" width="18.8" height="233.7" fill="url(#gi)" rx="4"/><text x="352.0" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">May</text><rect x="393.9" y="99.6" width="18.8" height="178.4" fill="url(#gs)" rx="4"/><rect x="416.7" y="46.3" width="18.8" height="231.7" fill="url(#gi)" rx="4"/><text x="414.7" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Jun</text><rect x="456.5" y="76.3" width="18.8" height="201.7" fill="url(#gs)" rx="4"/><rect x="479.3" y="44.5" width="18.8" height="233.5" fill="url(#gi)" rx="4"/><text x="477.3" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Jul</text><rect x="519.2" y="84.8" width="18.8" height="193.2" fill="url(#gs)" rx="4"/><rect x="542.0" y="44.1" width="18.8" height="233.9" fill="url(#gi)" rx="4"/><text x="540.0" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Aug</text><rect x="581.9" y="137.4" width="18.8" height="140.6" fill="url(#gs)" rx="4"/><rect x="604.7" y="51.9" width="18.8" height="226.1" fill="url(#gi)" rx="4"/><text x="602.7" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Sep</text><rect x="644.5" y="137.8" width="18.8" height="140.2" fill="url(#gs)" rx="4"/><rect x="667.3" y="56.4" width="18.8" height="221.6" fill="url(#gi)" rx="4"/><text x="665.3" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Oct</text><rect x="707.2" y="134.1" width="18.8" height="143.9" fill="url(#gs)" rx="4"/><rect x="730.0" y="57.1" width="18.8" height="220.9" fill="url(#gi)" rx="4"/><text x="728.0" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Nov</text><rect x="769.9" y="100.6" width="18.8" height="177.4" fill="url(#gs)" rx="4"/><rect x="792.7" y="55.3" width="18.8" height="222.7" fill="url(#gi)" rx="4"/><text x="790.7" y="297" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">Dec</text><line x1="70" y1="278" x2="822" y2="278" stroke="#cbd5e1" stroke-width="1.5"/></svg>
+      <div class="legend">
+        <span class="item"><span class="swatch" style="background:#3b82f6"></span>Strict spend &mdash; $54.0M annual</span>
+        <span class="item"><span class="swatch" style="background:#10b981"></span>Income &mdash; $80.0M annual</span>
+      </div>
+      <div class="note">Strict spend excludes both transfer legs and offsets refunds against their original category. Periods use the local transaction date, so UTC and local months differ at boundaries.</div>
+    </div>
+    <div class="card">
+      <h3>Net spend by category (top 12)</h3>
+      <svg viewBox="0 0 840 422" width="100%" role="img" aria-label="Spend by category"><text x="148" y="26" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">HOUSING_RENT</text><rect x="160" y="12" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="12" width="560.0" height="20" fill="#6366f1" rx="10"/><text x="730.0" y="26" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$17.1M</text><text x="148" y="60" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">TRAVEL</text><rect x="160" y="46" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="46" width="427.3" height="20" fill="#3b82f6" rx="10"/><text x="730.0" y="60" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$13.1M</text><text x="148" y="94" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">GROCERY</text><rect x="160" y="80" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="80" width="175.1" height="20" fill="#0ea5e9" rx="10"/><text x="730.0" y="94" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$5.4M</text><text x="148" y="128" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">SHOPPING</text><rect x="160" y="114" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="114" width="134.5" height="20" fill="#14b8a6" rx="10"/><text x="730.0" y="128" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$4.1M</text><text x="148" y="162" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">DINING</text><rect x="160" y="148" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="148" width="94.6" height="20" fill="#10b981" rx="10"/><text x="730.0" y="162" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$2.9M</text><text x="148" y="196" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">UTILITIES</text><rect x="160" y="182" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="182" width="68.0" height="20" fill="#84cc16" rx="10"/><text x="730.0" y="196" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$2.1M</text><text x="148" y="230" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">HEALTH</text><rect x="160" y="216" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="216" width="51.3" height="20" fill="#f59e0b" rx="10"/><text x="730.0" y="230" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.6M</text><text x="148" y="264" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">OTHER</text><rect x="160" y="250" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="250" width="50.2" height="20" fill="#f97316" rx="10"/><text x="730.0" y="264" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.5M</text><text x="148" y="298" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">EDUCATION</text><rect x="160" y="284" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="284" width="49.2" height="20" fill="#ef4444" rx="10"/><text x="730.0" y="298" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.5M</text><text x="148" y="332" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">INSURANCE</text><rect x="160" y="318" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="318" width="41.8" height="20" fill="#ec4899" rx="10"/><text x="730.0" y="332" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.3M</text><text x="148" y="366" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">TRANSPORT</text><rect x="160" y="352" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="352" width="40.9" height="20" fill="#8b5cf6" rx="10"/><text x="730.0" y="366" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.2M</text><text x="148" y="400" text-anchor="end" font-size="12.5" font-weight="600" fill="#334151">ENTERTAINMENT</text><rect x="160" y="386" width="560.0" height="20" fill="#f1f5f9" rx="10"/><rect x="160" y="386" width="39.4" height="20" fill="#64748b" rx="10"/><text x="730.0" y="400" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f172a">$1.2M</text></svg>
+      <div class="note">Refunds are netted into the refunded purchase category through the pipeline treatment rules, so bars show net household outflow.</div>
+    </div>
+  </div>
+</section>
+
+<section id="budgets">
+  <div class="sec-head"><span class="dot" style="background:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.16)"></span><h2>Budget comparison</h2><span class="hint">118,784 monthly category budgets vs actuals</span></div>
+  <div class="split">
+    <div class="card">
+      <h3>Budget status distribution</h3>
+      <div class="donut-wrap"><svg viewBox="0 0 210 210" width="210" height="210" role="img" aria-label="Budget status distribution"><circle cx="105.0" cy="105.0" r="74" fill="none" stroke="#f1f5f9" stroke-width="34"/><circle cx="105.0" cy="105.0" r="74" fill="none" stroke="#10b981" stroke-width="34" stroke-dasharray="332.25 132.70" stroke-dashoffset="-0.00" stroke-linecap="butt" transform="rotate(-90 105.0 105.0)"/><circle cx="105.0" cy="105.0" r="74" fill="none" stroke="#ef4444" stroke-width="34" stroke-dasharray="108.72 356.24" stroke-dashoffset="-334.25" stroke-linecap="butt" transform="rotate(-90 105.0 105.0)"/><circle cx="105.0" cy="105.0" r="74" fill="none" stroke="#f59e0b" stroke-width="34" stroke-dasharray="17.98 446.97" stroke-dashoffset="-444.97" stroke-linecap="butt" transform="rotate(-90 105.0 105.0)"/><text x="105.0" y="101.0" text-anchor="middle" font-size="30" font-weight="800" fill="#0f172a">118,784</text><text x="105.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#94a3b8">BUDGET ROWS</text></svg></div>
+      <div class="status-list"><div class="status-row"><span class="left"><span class="swatch" style="background:#10b981"></span>Under <span class="pill ok">under</span></span><span class="num">85,393 rows &middot; 71.9%</span></div><div class="status-row"><span class="left"><span class="swatch" style="background:#ef4444"></span>Over <span class="pill bad">over</span></span><span class="num">28,286 rows &middot; 23.8%</span></div><div class="status-row"><span class="left"><span class="swatch" style="background:#f59e0b"></span>Near <span class="pill warn">near</span></span><span class="num">5,105 rows &middot; 4.3%</span></div></div>
+      <div class="note">Budget $56,369,145 vs actual $46,580,211 &rarr; variance $9,788,934.</div>
+    </div>
+    <div class="card">
+      <h3>Most over-budget households (top 10)</h3>
+      <table><thead><tr><th class="left">User</th><th class="left">Month</th><th class="left">Category</th><th class="right">Budget</th><th class="right">Actual</th><th class="right">Over by</th><th class="right">Usage</th></tr></thead><tbody><tr><td class="left">USR-000756</td><td class="left">2026-08</td><td class="left">TRAVEL</td><td class="right">$175.00</td><td class="right">$10,884.54</td><td class="right"><span class="pill bad">$-10,709.54</span></td><td class="right">6219.7%</td></tr><tr><td class="left">USR-000885</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$350.00</td><td class="right">$10,984.02</td><td class="right"><span class="pill bad">$-10,634.02</span></td><td class="right">3138.3%</td></tr><tr><td class="left">USR-000110</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$185.00</td><td class="right">$10,096.41</td><td class="right"><span class="pill bad">$-9,911.41</span></td><td class="right">5457.5%</td></tr><tr><td class="left">USR-000895</td><td class="left">2026-08</td><td class="left">TRAVEL</td><td class="right">$505.00</td><td class="right">$10,287.09</td><td class="right"><span class="pill bad">$-9,782.09</span></td><td class="right">2037.0%</td></tr><tr><td class="left">USR-000048</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$115.00</td><td class="right">$9,892.22</td><td class="right"><span class="pill bad">$-9,777.22</span></td><td class="right">8601.9%</td></tr><tr><td class="left">USR-000023</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$505.00</td><td class="right">$10,277.59</td><td class="right"><span class="pill bad">$-9,772.59</span></td><td class="right">2035.2%</td></tr><tr><td class="left">USR-000750</td><td class="left">2026-08</td><td class="left">TRAVEL</td><td class="right">$130.00</td><td class="right">$9,546.38</td><td class="right"><span class="pill bad">$-9,416.38</span></td><td class="right">7343.4%</td></tr><tr><td class="left">USR-000358</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$355.00</td><td class="right">$9,137.95</td><td class="right"><span class="pill bad">$-8,782.95</span></td><td class="right">2574.1%</td></tr><tr><td class="left">USR-000511</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$255.00</td><td class="right">$8,634.20</td><td class="right"><span class="pill bad">$-8,379.20</span></td><td class="right">3386.0%</td></tr><tr><td class="left">USR-000961</td><td class="left">2026-07</td><td class="left">TRAVEL</td><td class="right">$225.00</td><td class="right">$8,525.09</td><td class="right"><span class="pill bad">$-8,300.09</span></td><td class="right">3788.9%</td></tr></tbody></table>
+      <div class="note">Legacy category codes (FOOD, TRANSPORTATION, SUBSCRIPTIONS, UTIL, MISC) are resolved through the <code>category_alias</code> table before comparison, avoiding 2,376 false "under" results.</div>
+    </div>
+  </div>
+</section>
+
+<section id="recurring">
+  <div class="sec-head"><span class="dot" style="background:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92,246,.16)"></span><h2>Recurring payment detection</h2><span class="hint">detector output vs separate ground truth</span></div>
+  <div class="grid mini"><div class="kpi" style="--accent:#f59e0b"><div class="kpi-label">Series detected</div><div class="kpi-value">5,609</div><div class="kpi-sub">of 5,249 detectable</div></div><div class="kpi" style="--accent:#ef4444"><div class="kpi-label">Matched</div><div class="kpi-value">5,249</div><div class="kpi-sub">360 FP, 0 FN</div></div><div class="kpi" style="--accent:#8b5cf6"><div class="kpi-label">Precision</div><div class="kpi-value">0.936</div><div class="kpi-sub">of detected, truly recurring</div></div><div class="kpi" style="--accent:#14b8a6"><div class="kpi-label">Recall</div><div class="kpi-value">1.000</div><div class="kpi-sub">of ground-truth detectable series</div></div><div class="kpi" style="--accent:#2563eb"><div class="kpi-label">Skips flagged</div><div class="kpi-value">30</div><div class="kpi-sub">of 30 seeded skips</div></div><div class="kpi" style="--accent:#6366f1"><div class="kpi-label">Expected monthly</div><div class="kpi-value">$7.8M</div><div class="kpi-sub">sum of series expected amounts</div></div><div class="kpi" style="--accent:#0ea5e9"><div class="kpi-label">Amount MAPE</div><div class="kpi-value">0.0%</div><div class="kpi-sub">matched series only</div></div><div class="kpi" style="--accent:#10b981"><div class="kpi-label">Next-date error</div><div class="kpi-value">0.0 d</div><div class="kpi-sub">median over 4,560 series</div></div></div>
+  <div class="split2" style="margin-top:16px">
+    <div class="card">
+      <h3>Detected series by status</h3>
+      <table><thead><tr><th class="left">Detection status</th><th class="right">Series</th><th class="right">Share</th></tr></thead><tbody><tr><td class="left">active</td><td class="right"><span class="pill info">5,495</span></td><td class="right">98.0%</td></tr><tr><td class="left">ended</td><td class="right"><span class="pill info">114</span></td><td class="right">2.0%</td></tr></tbody></table>
+      <div class="note">337 series have missed occurrences and are reported as gaps rather than silently shifted.</div>
+    </div>
+    <div class="card">
+      <h3>Detected series by category (top 8)</h3>
+      <table><thead><tr><th class="left">Top categories</th><th class="right">Series</th></tr></thead><tbody><tr><td class="left">SUBSCRIPTION</td><td class="right">3,170</td></tr><tr><td class="left">INCOME_SALARY</td><td class="right">886</td></tr><tr><td class="left">HOUSING_RENT</td><td class="right">802</td></tr><tr><td class="left">HEALTH</td><td class="right">398</td></tr><tr><td class="left">INSURANCE</td><td class="right">123</td></tr><tr><td class="left">UTILITIES</td><td class="right">99</td></tr><tr><td class="left">GROCERY</td><td class="right">24</td></tr><tr><td class="left">SHOPPING</td><td class="right">20</td></tr></tbody></table>
+      <div class="note">Ground truth series use separate <code>TRU-</code> IDs so detected and true series can never be confused.</div>
+    </div>
+  </div>
+</section>
+
+<section id="exceptions">
+  <div class="sec-head"><span class="dot" style="background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.16)"></span><h2>Labelled exceptions</h2><span class="hint">five required edge cases with ground truth and expected resolution</span></div>
+  <div class="card">
+    <table><thead><tr><th class="left">Issue type</th><th class="right">Cases</th><th class="right">Impacted rows</th><th class="left">Severity</th><th class="left">Observed behaviour</th><th class="left">Expected resolution</th></tr></thead><tbody><tr><td class="left">timezone_boundary_date</td><td class="right">4,505</td><td class="right">4,505</td><td class="left"><span class="pill warn">medium</span></td><td class="left">UTC posted_at month differs from the local transaction month.</td><td class="left">Assign budget and insight periods from the local transaction date, not raw UTC.</td></tr><tr><td class="left">budget_taxonomy_mismatch</td><td class="right">1</td><td class="right">2,376</td><td class="left"><span class="pill warn">medium</span></td><td class="left">2376 budget rows use deprecated category codes.</td><td class="left">Map deprecated codes through category_alias before comparing actuals.</td></tr><tr><td class="left">refund_treated_as_new_expense</td><td class="right">75</td><td class="right">75</td><td class="left"><span class="pill bad">high</span></td><td class="left">Positive refund credit resembles a purchase descriptor and lacks a refund link.</td><td class="left">Treat positive credits in expense categories as refunds and offset the original category.</td></tr><tr><td class="left">transfer_double_count</td><td class="right">75</td><td class="right">75</td><td class="left"><span class="pill bad">high</span></td><td class="left">Unlinked duplicate of an internal transfer debit appears as spending.</td><td class="left">Exclude internal transfer legs and linked duplicates from spend and budget actuals.</td></tr><tr><td class="left">recurring_series_skip</td><td class="right">30</td><td class="right">30</td><td class="left"><span class="pill warn">medium</span></td><td class="left">Expected monthly occurrence missing in 2026-09.</td><td class="left">Use gap detection and report the missing occurrence; do not silently shift the series.</td></tr></tbody></table>
+    <div class="note">Anomalies are injected deliberately and labelled in <code>ground_truth/anomaly_manifest.csv</code> with impact counts and expected resolution. Every case is scored by <code>evaluate</code>.</div>
+  </div>
+</section>
+
+<section id="reports">
+  <div class="sec-head"><span class="dot" style="background:#f59e0b;box-shadow:0 0 0 4px rgba(245,158,11,.16)"></span><h2>Reports and documentation</h2><span class="hint">every claim above is backed by these artifacts</span></div>
+  <div class="reports"><a class="report" href="validation/validation_summary.md"><div class="r-title">Validation summary</div><div class="r-desc">138 checks with expected outcomes, reconciliation, and known exceptions</div></a><a class="report" href="outputs/evaluation_report.md"><div class="r-title">Evaluation report</div><div class="r-desc">Metrics against ground truth: per-class scores, confusions and distributions</div></a><a class="report" href="outputs/reproducibility_report.md"><div class="r-title">Reproducibility report</div><div class="r-desc">Two fixed-seed runs compared row counts and SHA-256 checksums</div></a><a class="report" href="metadata/manifest.json"><div class="r-title">Manifest</div><div class="r-desc">Per-file row counts, byte sizes and SHA-256 checksums</div></a><a class="report" href="metadata/source_manifest.json"><div class="r-title">Source manifest</div><div class="r-desc">Data provenance, fields, transformations and licensing note</div></a><a class="report" href="../docs/data_dictionary.md"><div class="r-title">Data dictionary</div><div class="r-desc">Full field-level documentation for every export</div></a><a class="report" href="../schema.sql"><div class="r-title">Database schema</div><div class="r-desc">DDL with primary keys, foreign keys, enums and indexes</div></a><a class="report" href="../README.md"><div class="r-title">Project README</div><div class="r-desc">Workflow, business rules, exception handling and metrics</div></a></div>
+</section>
+
+<footer class="footer">
+  Synthetic data for evaluation only &middot; generator 1.0.0 &middot; schema 1.0.0 &middot; project 1.0.0 &middot; 2027-01-15T00:00:00Z &middot; no real personal data.
+</footer>
+</div>
+</body>
+</html>

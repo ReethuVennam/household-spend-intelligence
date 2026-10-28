@@ -1,0 +1,22 @@
+{
+  "external_data_used": false,
+  "generated_at": "2027-01-15T00:00:00Z",
+  "libraries": {
+    "numpy": "2.4.3",
+    "pandas": "2.3.3",
+    "python": "3.14.3"
+  },
+  "license_note": "Synthetic output produced for this project. Do not represent it as real customer data.",
+  "provenance": "All records are synthetic and generated deterministically from a fixed seed. No personal, confidential, scraped, or externally licensed data is included.",
+  "seed": 20261022,
+  "source_references": [
+    {
+      "dataset_version": null,
+      "license": null,
+      "name": "Public banking and budgeting schema conventions",
+      "retrieved_at": null,
+      "url": null,
+      "usage": "Schema inspiration only; no source records copied."
+    }
+  ]
+}
