@@ -4,6 +4,10 @@ A deterministic, synthetic analytics platform for categorizing transactions, map
 
 The build covers the complete workflow from the problem statement: master data, dependent transaction and event records, category taxonomy and rules, monthly budgets, injected recurring series, labelled exception cases, derived insights, validation, evaluation, and fixed-seed reproducibility.
 
+![Household Spend Intelligence dashboard](docs/dashboard_screenshot.png)
+
+*The dashboard above is `dataset/dashboard.html` — a self-contained file with no server or network dependency. GitHub shows HTML as source, so after cloning run `python -m src.cli dashboard --dataset dataset` (or open the committed file) to view it interactively.*
+
 ## Quick start
 
 Requires Python 3.11+ for `zoneinfo`, pandas, and numpy.
