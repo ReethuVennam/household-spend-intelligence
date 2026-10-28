@@ -8,6 +8,10 @@ The build covers the complete workflow from the problem statement: master data, 
 
 *The dashboard above is `dataset/dashboard.html` — one self-contained HTML file with zero dependencies. It is fully interactive: hover tooltips on every chart, sortable table columns, light/dark mode toggle, animated score meters, chart/table view switch, and a searchable ground-truth data explorer. GitHub shows HTML as source, so after cloning just open the file in a browser (or run `python -m src.cli dashboard --dataset dataset` to rebuild it).*
 
+![React dashboard](docs/react_dashboard_screenshot.png)
+
+*A second front end: the React dashboard in `web/`, built to a single dependency-free file at `web/dist/index.html` (same sections and data, component architecture — see [React front end](#react-front-end)).*
+
 ## Quick start
 
 Requires Python 3.11+ for `zoneinfo`, pandas, and numpy.
@@ -29,10 +33,11 @@ python -m src.cli generate --scale full --seed 20261022 --out dataset
 python -m src.cli validate --dataset dataset
 python -m src.cli evaluate --dataset dataset
 python -m src.cli dashboard --dataset dataset
+python -m src.cli webdata --dataset dataset
 python -m src.cli reproduce --scale full --seed 20261022 --formats csv --out dataset
 ```
 
-The fixed seed is `20261022`. `mini`, `starter`, and `full` scales all use the same generator, with scale passed only as a volume parameter. `all` runs generate, validate, evaluate, and the dashboard in one shot.
+The fixed seed is `20261022`. `mini`, `starter`, and `full` scales all use the same generator, with scale passed only as a volume parameter. `all` runs generate, validate, evaluate, the dashboard, and the React data payload in one shot.
 
 ## Tests
 
@@ -41,12 +46,13 @@ python -m pip install -r requirements.txt
 python -m pytest
 ```
 
-24 tests in two suites, running in seconds on a freshly generated `mini` dataset (seed `20261022`) — a clean checkout needs no pre-built data:
+25 tests in three suites, running in seconds on a freshly generated `mini` dataset (seed `20261022`) — a clean checkout needs no pre-built data:
 
 | Suite | Covers |
 |---|---|
 | `tests/test_rules.py` | Unit tests: rule priority ordering, merchant alias matching, inactive-rule exclusion, unmatched fallbacks, sign-based income fallback, sequential `RUL-` IDs, legacy taxonomy alias resolution, classification-metric math |
 | `tests/test_pipeline.py` | End-to-end: scale volumes, ID conventions (`USR-`/`ACC-`/`TXN-`/`BUD-`/`REC-`), primary-key uniqueness, foreign-key joins, date ranges, signed amounts and treatment enums, validation PASS, all five labelled edge cases, ground-truth isolation from pipeline features, derived budget arithmetic, evaluation metric bounds, same-seed checksum determinism |
+| `tests/test_webdata.py` | React data payload: all top-level keys, chronological monthly rows, budget status counts summing to the row total, relative report hrefs, optional explorer sample |
 
 ## What is produced
 
@@ -62,9 +68,23 @@ python -m pytest
 | Evaluation | `dataset/outputs/evaluation_report.json`, `.md` |
 | Reproducibility | `dataset/outputs/reproducibility_report.json`, `.md` |
 | Dashboard | `dataset/dashboard.html` (interactive, self-contained page: tooltips, sorting, dark mode, data explorer — no server needed) |
+| React front end | `web/dist/index.html` (single-file React build: same sections, zero runtime dependencies) |
 | Row samples | `samples/*.csv` (500-row excerpts so reviewers can inspect real records without pulling 483 MB) |
 
-Every file written by the generator has a row count, byte size, and SHA-256 checksum in the manifest. Validation, evaluation, reproducibility, and dashboard outputs are written after generation and are not part of that checksum set.
+Every file written by the generator has a row count, byte size, and SHA-256 checksum in the manifest. Validation, evaluation, reproducibility, dashboard, and React payload outputs are written after generation and are not part of that checksum set.
+
+## React front end
+
+`web/` is a React + Vite dashboard that renders the same outputs through `python -m src.cli webdata`, which writes `web/src/data.json` (also run as part of `all`):
+
+```powershell
+cd web
+npm install        # first time only
+npm run build      # writes web/dist/index.html — one self-contained file
+npm run dev        # local dev server with hot reload
+```
+
+The build inlines JS, CSS, and the data payload into `web/dist/index.html`, so the file opens straight from a clone with no server or `npm install`. It covers the overview scorecards, monthly spend/income chart, category mix, budget donut with the worst over-budget rows, recurring detection, exception manifest, and the searchable ground-truth data explorer — with hover tooltips, sortable tables, count-up animations, and a light/dark theme toggle. `web/dist` is committed; `web/node_modules` is not.
 
 > **Note on repository size:** the bulk exports under `dataset/data/` plus large CSV/JSONL ground-truth files are excluded from git (483 MB total, with a 121 MB SQL file that exceeds GitHub's 100 MB limit). They are fully reproducible with `python -m src.cli all --scale full --seed 20261022 --out dataset --formats csv,json,sql` in ~4 minutes. The committed evidence — reports, manifest, dashboard, and `samples/` — reflects that exact run.
 

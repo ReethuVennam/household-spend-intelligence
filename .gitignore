@@ -6,6 +6,9 @@ __pycache__/
 venv/
 *.egg-info/
 
+# Node (React front end) — web/dist/index.html IS committed
+web/node_modules/
+
 # Bulk generated data (483 MB) — regenerate with:
 #   python -m src.cli all --scale full --seed 20261022 --out dataset --formats csv,json,sql
 dataset/data/

@@ -11,6 +11,7 @@ from .dashboard import build_dashboard
 from .generator import generate_dataset
 from .metrics import run_evaluation
 from .validation import run_validation
+from .webdata import build_web_data
 
 
 def _parse_formats(value: str) -> tuple[str, ...]:
@@ -157,6 +158,14 @@ def _cmd_dashboard(args) -> int:
     return 0
 
 
+def _cmd_webdata(args) -> int:
+    dataset = getattr(args, "dataset", getattr(args, "out", str(DEFAULT_DATASET)))
+    out = build_web_data(dataset)
+    print(f"Web data: {out.resolve()}")
+    print(f"Size: {out.stat().st_size:,} bytes")
+    return 0
+
+
 def _cmd_all(args) -> int:
     rc = _cmd_generate(args)
     if rc != 0:
@@ -167,7 +176,10 @@ def _cmd_all(args) -> int:
     rc = _cmd_evaluate(args)
     if rc != 0:
         return rc
-    return _cmd_dashboard(args)
+    rc = _cmd_dashboard(args)
+    if rc != 0:
+        return rc
+    return _cmd_webdata(args)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -194,6 +206,10 @@ def build_parser() -> argparse.ArgumentParser:
     dash = sub.add_parser("dashboard", help="Build the static HTML dashboard")
     dash.add_argument("--dataset", default=str(DEFAULT_DATASET))
     dash.set_defaults(func=_cmd_dashboard)
+
+    web = sub.add_parser("webdata", help="Build the data payload for the React front end")
+    web.add_argument("--dataset", default=str(DEFAULT_DATASET))
+    web.set_defaults(func=_cmd_webdata)
 
     rep = sub.add_parser("reproduce", help="Generate twice and compare row counts and checksums")
     rep.add_argument("--scale", choices=sorted(SCALES), default="starter")

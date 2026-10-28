@@ -17,7 +17,7 @@
         "isDefault": true
       },
       "problemMatcher": [],
-      "detail": "Generate, validate, evaluate, and build the dashboard"
+      "detail": "Generate, validate, evaluate, dashboard, and React data payload"
     },
     {
       "label": "Validate only",
@@ -46,6 +46,32 @@
       "command": "start dataset\\dashboard.html",
       "windows": {
         "command": "start dataset\\dashboard.html"
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Rebuild React data payload",
+      "type": "shell",
+      "command": "python -m src.cli webdata --dataset dataset",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build React dashboard",
+      "type": "shell",
+      "command": "npm run build",
+      "options": { "cwd": "${workspaceFolder}/web" },
+      "group": "build",
+      "problemMatcher": [],
+      "detail": "Vite build -> web/dist/index.html (single file)"
+    },
+    {
+      "label": "Open React dashboard in browser",
+      "type": "shell",
+      "command": "start web\\dist\\index.html",
+      "windows": {
+        "command": "start web\\dist\\index.html"
       },
       "group": "none",
       "problemMatcher": []
