@@ -6,7 +6,7 @@ The build covers the complete workflow from the problem statement: master data, 
 
 ![Household Spend Intelligence dashboard](docs/dashboard_screenshot.png)
 
-*The dashboard above is `dataset/dashboard.html` — a self-contained file with no server or network dependency. GitHub shows HTML as source, so after cloning run `python -m src.cli dashboard --dataset dataset` (or open the committed file) to view it interactively.*
+*The dashboard above is `dataset/dashboard.html` — one self-contained HTML file with zero dependencies. It is fully interactive: hover tooltips on every chart, sortable table columns, light/dark mode toggle, animated score meters, chart/table view switch, and a searchable ground-truth data explorer. GitHub shows HTML as source, so after cloning just open the file in a browser (or run `python -m src.cli dashboard --dataset dataset` to rebuild it).*
 
 ## Quick start
 
@@ -61,7 +61,7 @@ python -m pytest
 | Validation | `dataset/validation/validation_summary.json`, `.md` |
 | Evaluation | `dataset/outputs/evaluation_report.json`, `.md` |
 | Reproducibility | `dataset/outputs/reproducibility_report.json`, `.md` |
-| Dashboard | `dataset/dashboard.html` (self-contained static page, no server or network needed) |
+| Dashboard | `dataset/dashboard.html` (interactive, self-contained page: tooltips, sorting, dark mode, data explorer — no server needed) |
 | Row samples | `samples/*.csv` (500-row excerpts so reviewers can inspect real records without pulling 483 MB) |
 
 Every file written by the generator has a row count, byte size, and SHA-256 checksum in the manifest. Validation, evaluation, reproducibility, and dashboard outputs are written after generation and are not part of that checksum set.
